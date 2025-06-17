@@ -1,0 +1,123 @@
+import React, { useState, useEffect } from 'react';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+} from '@/components/ui/dialog';
+import { Button } from '../../ui/button';
+import BriefForm from '../../forms/brief';
+import { ContactForm } from '../../forms/contact-form';
+import './hero-modal.css';
+
+interface HeroModalProps {
+    title: string;
+    description: string;
+    onClose: () => void;
+};
+
+// Контентная часть для модального окна
+const HeroModalContent = ({ mode, setMode, title }: { mode: 'contact' | 'brief', setMode: (m: 'contact' | 'brief') => void, title: string }) => (
+    mode === 'contact' ? (
+        <>
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-2 md:mb-4 text-secondary-foreground text-center">{title}</h2>
+            <p className="text-sm md:text-base text-center text-secondary-foreground mb-4 md:mb-10">
+                Заполните информацию для получения готового сайта и расчета стоимости
+            </p>
+            <Button onClick={() => setMode('brief')} className="w-full max-w-xs md:w-auto pointer-events-auto mb-6 md:mb-0" variant="secondary">
+                Заполнить информацию
+            </Button>
+        </>
+    ) : (
+        <>
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-2 md:mb-4 text-secondary-foreground text-center">Бриф на разработку сайта</h2>
+            <span className="text-sm md:text-base text-secondary-foreground text-center mb-4 md:mb-10 block">
+                Если у вас возникают вопросы, менеджер поможет вам с заполнением
+            </span>
+            <Button
+                onClick={() => setMode('contact')}
+                variant="secondary"
+                className="w-full max-w-xs md:w-auto pointer-events-auto mb-6 md:mb-0"
+            >
+                Связаться с менеджером
+            </Button>
+        </>
+    )
+);
+
+export const HeroModal = ({ title, description, onClose }: HeroModalProps) => {
+    const [mode, setMode] = useState<'contact' | 'brief'>('contact');
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return (
+        <Dialog open={true} onOpenChange={onClose}>
+            <DialogHeader>
+                <DialogTitle>{title}</DialogTitle>
+                <DialogDescription>{description}</DialogDescription>
+            </DialogHeader>
+            <DialogContent className={`p-0 bg-transparent shadow-none border-none overflow-visible max-w-3xl w-full hrmod-dialog-content`}>
+                <div className={`hrmodContainer ${mode} ${isMobile ? 'min-h-screen overflow-y-auto h-auto' : 'h-[90vh]'} w-full flex items-center justify-center bg-black relative`}>
+                    <div className={`hrmodBg absolute top-0 right-0 w-full h-full -z-10`} />
+                    {/* Контентная часть всегда присутствует */}
+                    {isMobile ? (
+                        <div className="w-full h-full flex flex-col items-center justify-start z-20 px-4 py-10">
+                            <HeroModalContent mode={mode} setMode={setMode} title={title} />
+                            {/* Одна форма */}
+                            <div className="w-full flex flex-col items-center justify-center mt-4">
+                                {mode === 'brief' ? (
+                                    <div className="w-full h-full max-w-xl">
+                                        <BriefForm />
+                                    </div>
+                                ) : (
+                                    <div className="w-full max-w-md">
+                                        <ContactForm onSuccess={onClose} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <div className={`flex flex-row w-full h-full z-10`}>
+                                {/* Бриф */}
+                                <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-4">
+                                    <div className={`transition-transform duration-500 ${mode === 'brief' ? 'scale-100' : 'scale-0'} w-full max-w-xl`}>
+                                        <BriefForm />
+                                    </div>
+                                </div>
+                                {/* Контакты */}
+                                <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-4">
+                                    <div className={`transition-transform duration-500 ${mode === 'contact' ? 'scale-100' : 'scale-0'} w-full max-w-md`}>
+                                        <ContactForm onSuccess={onClose} />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* Абсолютная контентная часть для desktop */}
+                            <div className="absolute top-0 left-0 w-full h-full flex flex-col md:flex-row pointer-events-none z-20">
+                                <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
+                                    <div className={`transition-all duration-700 ${mode === 'contact' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-32'} text-white m-8 text-center pointer-events-none`}>
+                                        <HeroModalContent mode={mode} setMode={setMode} title={title} />
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
+                                    <div className={`transition-all duration-700 ${mode === 'brief' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-32'} text-white m-8 text-center pointer-events-none`}>
+                                        <HeroModalContent mode={mode} setMode={setMode} title={title} />
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
+            </DialogContent>
+        </Dialog>
+    );
+} 

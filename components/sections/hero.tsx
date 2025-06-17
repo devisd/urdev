@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
 import { useState } from "react";
-import { ContactModal } from "@/components/modals/contact-modal";
 import { WaveBackground } from "../ui/wave-background";
 import { HeroButton } from "../ui/hero-button/hero-button";
+import { HeroModal } from "../modals/hero-modal/hero-modal";
 
 export function HeroSection() {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -40,13 +40,20 @@ export function HeroSection() {
 
       {
         showContactModal && (
+          <HeroModal
+            title="Оставьте заявку"
+            description="Расскажите о вашем проекте, и мы свяжемся с вами для обсуждения деталей"
+            onClose={() => setShowContactModal(false)}
+          />)}
+      {/* {
+        showContactModal && (
           <ContactModal
             title="Оставьте заявку"
             description="Расскажите о вашем проекте, и мы свяжемся с вами для обсуждения деталей"
             onClose={() => setShowContactModal(false)}
           />
         )
-      }
+      } */}
     </section >
   );
 }

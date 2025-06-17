@@ -39,7 +39,7 @@ export function Header() {
 
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    
+
     if (pathname === "/brief") {
       // Если мы на странице брифа, переходим на главную с якорем
       router.push(`/${href}`);
@@ -49,7 +49,7 @@ export function Header() {
         behavior: "smooth",
       });
     }
-    
+
     if (mobileMenuOpen) {
       setMobileMenuOpen(false);
     }
@@ -147,8 +147,8 @@ export function Header() {
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                   className="w-full mt-2"
                 >
-                  <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                  <Sun className="h-4 w-4 block transition-all dark:hidden" />
+                  <Moon className="h-4 w-4 hidden transition-all dark:block" />
                   <span className="ml-2">Переключить тему</span>
                 </Button>
                 <Button

@@ -1,0 +1,95 @@
+.hrmodContainer {
+    position: relative;
+    min-height: 60vh;
+    min-width: 60vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 90vh;
+    max-width: 100vw;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+}
+
+.hrmodContainer::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.hrmodBg {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300vw;
+    background-image: linear-gradient(-45deg, #2362E1 0%, #5A8DF6 100%);
+    transition: 1s ease-in-out;
+    z-index: 6;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-bottom-right-radius: max(50vw, 50vh);
+    border-top-left-radius: max(50vw, 50vh);
+}
+
+.hrmodContainer.contact .hrmodBg {
+    transform: translate(0, 0);
+    right: 50%;
+}
+
+.hrmodContainer.brief .hrmodBg {
+    transform: translate(100%, 0);
+    right: 50%;
+    height: 100%;
+}
+
+.light .hrmodContainer {
+    background: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .hrmodContainer {
+        min-width: 100vw;
+        min-height: 100vh;
+        max-height: 100vh;
+        border-radius: 0 !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    .hrmodBg {
+        width: 200vw;
+        height: 100vh;
+    }
+
+    .hrmodContainer.contact .hrmodBg {
+        border-bottom-right-radius: 350px !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    .hrmodContainer.brief .hrmodBg {
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 350px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .hrmodContainer {
+        min-width: 100vw;
+        min-height: 100vh;
+        max-height: 100vh;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    .hrmodBg {
+        width: 200vw;
+        height: 100vh;
+        border-radius: 0 !important;
+    }
+}
