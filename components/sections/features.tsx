@@ -58,7 +58,7 @@ export function FeaturesSection() {
           subtitle="Мы разрабатываем эффективные цифровые решения под реальные задачи вашего бизнеса"
           centered
         />
-        
+
         <motion.div
           variants={staggerContainer(0.1, 0.1)}
           initial="hidden"
@@ -86,23 +86,6 @@ export function FeaturesSection() {
               </Card>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div 
-          variants={zoomIn(0.4)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-          className="mt-16 text-center"
-        >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-secondary/30 text-secondary-foreground text-sm font-medium">
-              <span className="mr-2">•</span>Передовые технологии
-            </div>
-            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-secondary/30 text-secondary-foreground text-sm font-medium">
-              <span className="mr-2">•</span>Индивидуальный подход
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>
