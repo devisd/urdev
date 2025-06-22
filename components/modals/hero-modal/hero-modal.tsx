@@ -21,8 +21,8 @@ interface HeroModalProps {
 const HeroModalContent = ({ mode, setMode, title }: { mode: 'contact' | 'brief', setMode: (m: 'contact' | 'brief') => void, title: string }) => (
     mode === 'contact' ? (
         <>
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-2 md:mb-4 text-secondary-foreground text-center">{title}</h2>
-            <p className="text-sm md:text-base text-center text-secondary-foreground mb-4 md:mb-10">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-2 md:mb-4 text-secondary text-center">{title}</h2>
+            <p className="text-sm md:text-base text-center text-secondary mb-4 md:mb-10">
                 Заполните информацию для получения готового сайта и расчета стоимости
             </p>
             <Button onClick={() => setMode('brief')} className="w-full max-w-xs md:w-auto pointer-events-auto mb-6 md:mb-0" variant="secondary">
@@ -31,8 +31,8 @@ const HeroModalContent = ({ mode, setMode, title }: { mode: 'contact' | 'brief',
         </>
     ) : (
         <>
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-2 md:mb-4 text-secondary-foreground text-center">Бриф на разработку сайта</h2>
-            <span className="text-sm md:text-base text-secondary-foreground text-center mb-4 md:mb-10 block">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-2 md:mb-4 text-secondary text-center">Бриф на разработку сайта</h2>
+            <span className="text-sm md:text-base text-secondary text-center mb-4 md:mb-10 block">
                 Если у вас возникают вопросы, менеджер поможет вам с заполнением
             </span>
             <Button

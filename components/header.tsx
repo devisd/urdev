@@ -8,14 +8,14 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ContactModal } from "@/components/modals/contact-modal";
+import { HeroModal } from "./modals/hero-modal/hero-modal";
 
 const navItems = [
   { label: "Главная", href: "#hero" },
   { label: "Возможности", href: "#features" },
   { label: "Портфолио", href: "#portfolio" },
   { label: "Отзывы", href: "#testimonials" },
-  { label: "Тарифы", href: "#pricing" },
+  { label: "Цены", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
   { label: "Контакты", href: "#contact" },
 ];
@@ -67,7 +67,7 @@ export function Header() {
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-2 text-2xl font-bold">
               <span className="text-primary">UR</span>
-              <span className="text-primary/80">dev</span>
+              {/* <span className="text-primary/80">dev</span> */}
             </Link>
 
             <nav className="hidden md:flex items-center gap-1">
@@ -167,11 +167,13 @@ export function Header() {
         )}
       </AnimatePresence>
 
-      {showContactModal && (
-        <ContactModal
-          onClose={() => setShowContactModal(false)}
-        />
-      )}
+      {
+        showContactModal && (
+          <HeroModal
+            title="Оставьте заявку"
+            description="Расскажите о вашем проекте, и мы свяжемся с вами для обсуждения деталей"
+            onClose={() => setShowContactModal(false)}
+          />)}
     </>
   );
 }

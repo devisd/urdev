@@ -45,15 +45,6 @@ export function HeroSection() {
             description="Расскажите о вашем проекте, и мы свяжемся с вами для обсуждения деталей"
             onClose={() => setShowContactModal(false)}
           />)}
-      {/* {
-        showContactModal && (
-          <ContactModal
-            title="Оставьте заявку"
-            description="Расскажите о вашем проекте, и мы свяжемся с вами для обсуждения деталей"
-            onClose={() => setShowContactModal(false)}
-          />
-        )
-      } */}
     </section >
   );
 }

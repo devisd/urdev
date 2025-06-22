@@ -1,7 +1,7 @@
 "use client";
 
-import { 
-  Dialog, 
+import {
+  Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -15,7 +15,7 @@ import { Check } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { 
+import {
   Form,
   FormControl,
   FormField,
@@ -83,7 +83,7 @@ export function PricingModal({ plan, onClose }: PricingModalProps) {
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[500px] sm:max-h-[85vh] overflow-auto">
         <DialogHeader>
           <DialogTitle>{plan.name}</DialogTitle>
           <DialogDescription>{plan.description}</DialogDescription>
@@ -159,8 +159,8 @@ export function PricingModal({ plan, onClose }: PricingModalProps) {
                 placeholder="Расскажите нам о вашем проекте"
               />
             </div>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full h-12 text-base font-medium"
               disabled={isSubmitting}
             >

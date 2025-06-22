@@ -22,12 +22,12 @@ export function Footer() {
           <div>
             <Link href="/" className="inline-block mb-4">
               <div className="flex items-center gap-2 text-2xl font-bold">
-                <span className="text-primary">UR</span> 
-                <span className="text-primary/80">dev</span>
+                <span className="text-primary">UR</span>
+                {/* <span className="text-primary/80">dev</span> */}
               </div>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-xs">
-              Профессиональная разработка сайтов и приложений, которые 
+              Профессиональная разработка сайтов и приложений, которые
               увеличивают продажи и упрощают настройку.
             </p>
             <div className="flex space-x-4">
@@ -42,14 +42,14 @@ export function Footer() {
               </Button>
             </div>
           </div>
-          
+
           {/* Навигация */}
           <div>
             <h3 className="font-bold mb-4">Навигация</h3>
             <ul className="space-y-2">
               <li>
-                <a 
-                  href="#hero" 
+                <a
+                  href="#hero"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   onClick={(e) => handleSmoothScroll(e, "#hero")}
                 >
@@ -57,8 +57,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="#features" 
+                <a
+                  href="#features"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   onClick={(e) => handleSmoothScroll(e, "#features")}
                 >
@@ -66,8 +66,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="#portfolio" 
+                <a
+                  href="#portfolio"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   onClick={(e) => handleSmoothScroll(e, "#portfolio")}
                 >
@@ -75,17 +75,17 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="#pricing" 
+                <a
+                  href="#pricing"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   onClick={(e) => handleSmoothScroll(e, "#pricing")}
                 >
-                  Тарифы
+                  Цены
                 </a>
               </li>
             </ul>
           </div>
-          
+
           {/* Контакты */}
           <div>
             <h3 className="font-bold mb-4">Контакты</h3>
