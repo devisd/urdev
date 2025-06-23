@@ -5,17 +5,11 @@ import {
     Card,
     CardContent,
 } from "@/components/ui/card"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 
 const pageOptions = [
-    { value: "1", label: "1", cost: 30000 },
+    { value: "1", label: "Одна", cost: 30000 },
     { value: "up-to-5", label: "До 5", cost: 60000 },
     { value: "up-to-15", label: "До 15", cost: 80000 },
     { value: "more-than-15", label: "15 и более", cost: "negotiable" },
@@ -37,6 +31,7 @@ const crmOptions = [
 ]
 
 const cmsElementOptions = [
+    { value: "0", label: "Нет", cost: 0 },
     { value: "1", label: "1", cost: 2500 },
     { value: "2", label: "2", cost: 5000 },
     { value: "3", label: "3", cost: 7500 },
@@ -85,7 +80,7 @@ export function CalculatorForm() {
             currentCost += selectedCrm.cost
         }
 
-        if (crm === "yes" && cmsElements !== "0") {
+        if (cmsElements !== "0") {
             const selectedCms = cmsElementOptions.find(c => c.value === cmsElements)
             if (selectedCms) {
                 currentCost += selectedCms.cost
@@ -100,11 +95,7 @@ export function CalculatorForm() {
         }
     }, [pages, design, analytics, crm, cmsElements])
 
-    useEffect(() => {
-        if (crm === "no") {
-            setCmsElements("0")
-        }
-    }, [crm])
+
 
     return (
         <Card className="w-full pt-6 max-w-2xl mx-auto">
@@ -116,18 +107,18 @@ export function CalculatorForm() {
                             <p className="text-sm text-muted-foreground">
                                 Сколько должно быть страниц на сайте?
                             </p>
-                            <Select value={pages} onValueChange={setPages}>
-                                <SelectTrigger id="pages">
-                                    <SelectValue placeholder="Выберите количество" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {pageOptions.map(option => (
-                                        <SelectItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <div className="flex gap-2 flex-wrap">
+                                {pageOptions.map(option => (
+                                    <Button
+                                        key={option.value}
+                                        type="button"
+                                        variant={pages === option.value ? "default" : "outline"}
+                                        onClick={() => setPages(option.value)}
+                                    >
+                                        {option.label}
+                                    </Button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="space-y-2">
@@ -135,18 +126,18 @@ export function CalculatorForm() {
                             <p className="text-sm text-muted-foreground">
                                 Необходим уникальный дизайн с "Вау эффектом"?
                             </p>
-                            <Select value={design} onValueChange={setDesign}>
-                                <SelectTrigger id="design">
-                                    <SelectValue placeholder="Выберите опцию" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {designOptions.map(option => (
-                                        <SelectItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <div className="flex gap-2 flex-wrap">
+                                {designOptions.map(option => (
+                                    <Button
+                                        key={option.value}
+                                        type="button"
+                                        variant={design === option.value ? "default" : "outline"}
+                                        onClick={() => setDesign(option.value)}
+                                    >
+                                        {option.label}
+                                    </Button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="space-y-2">
@@ -154,18 +145,18 @@ export function CalculatorForm() {
                             <p className="text-sm text-muted-foreground">
                                 Планируете ли Вы собирать данные о посетителях сайта?
                             </p>
-                            <Select value={analytics} onValueChange={setAnalytics}>
-                                <SelectTrigger id="analytics">
-                                    <SelectValue placeholder="Выберите опцию" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {analyticsOptions.map(option => (
-                                        <SelectItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <div className="flex gap-2 flex-wrap">
+                                {analyticsOptions.map(option => (
+                                    <Button
+                                        key={option.value}
+                                        type="button"
+                                        variant={analytics === option.value ? "default" : "outline"}
+                                        onClick={() => setAnalytics(option.value)}
+                                    >
+                                        {option.label}
+                                    </Button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="space-y-2">
@@ -173,18 +164,18 @@ export function CalculatorForm() {
                             <p className="text-sm text-muted-foreground">
                                 Понадобится отправка заявок в Вашу CRM систему?
                             </p>
-                            <Select value={crm} onValueChange={setCrm}>
-                                <SelectTrigger id="crm">
-                                    <SelectValue placeholder="Выберите опцию" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {crmOptions.map(option => (
-                                        <SelectItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <div className="flex gap-2 flex-wrap">
+                                {crmOptions.map(option => (
+                                    <Button
+                                        key={option.value}
+                                        type="button"
+                                        variant={crm === option.value ? "default" : "outline"}
+                                        onClick={() => setCrm(option.value)}
+                                    >
+                                        {option.label}
+                                    </Button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="space-y-2">
@@ -196,18 +187,18 @@ export function CalculatorForm() {
                                 содержимое сайта. Какое количество элементов должны быть
                                 редактируемыми?
                             </p>
-                            <Select value={cmsElements} onValueChange={setCmsElements}>
-                                <SelectTrigger id="cms-elements">
-                                    <SelectValue placeholder="Выберите количество" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {cmsElementOptions.map(option => (
-                                        <SelectItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <div className="flex gap-2 flex-wrap">
+                                {cmsElementOptions.map(option => (
+                                    <Button
+                                        key={option.value}
+                                        type="button"
+                                        variant={cmsElements === option.value ? "default" : "outline"}
+                                        onClick={() => setCmsElements(option.value)}
+                                    >
+                                        {option.label}
+                                    </Button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <div className="pt-6 text-2xl font-bold text-center md:text-3xl">

@@ -126,7 +126,7 @@ export function PortfolioSection() {
 
   return (
     <section id="portfolio" className="py-24 transition-colors duration-300">
-      <div className="container mx-auto px-4 max-w-full">
+      <div className="container mx-auto px-4">
         <SectionHeading
           title="Наше портфолио"
           subtitle="Примеры наших успешных проектов"
@@ -134,7 +134,7 @@ export function PortfolioSection() {
         />
         <div
           ref={sectionRef}
-          className="flex flex-col md:flex-row gap-2 w-full md:h-[70vh] mx-auto mt-10 px-0 md:px-10"
+          className="flex flex-col md:flex-row gap-2 md:h-[70vh] w-full mx-auto px-0"
         >
           {portfolioItems.map((item, i) => {
             const opened = openedId === item.id;
@@ -181,11 +181,11 @@ export function PortfolioSection() {
                 <AnimatePresence>
                   {opened && (
                     <motion.div
-                      initial={{ opacity: 0, y: 40 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 40 }}
-                      transition={{ duration: 0.3 }}
-                      className="md:absolute md:inset-0 relative text-white w-full h-auto bg-black/20 dark:bg-neutral-900/20 flex flex-col justify-end p-8 z-30 rounded-xl overflow-y-auto md:max-h-full max-h-[90vh]"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: .8 }}
+                      className="md:absolute md:inset-0 relative text-white w-full h-auto flex flex-col justify-end p-8 z-30 rounded-xl overflow-y-auto md:max-h-full max-h-[90vh]"
                       onClick={e => e.stopPropagation()}
                     >
                       <div className="flex flex-col gap-2 mb-4">

@@ -65,19 +65,19 @@ export const WaveBackground: React.FC = () => {
         resizeCanvas();
         window.addEventListener("resize", resizeCanvas);
 
-        // Параметры частиц
-        const config = {
-            particleCount: 100,
-            particleSize: 3,
-        };
-        // Массив частиц
-        const particles = Array.from({ length: config.particleCount }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * config.particleSize + 1,
-            speed: Math.random() * 0.5 + 0.1,
-            offset: Math.random() * Math.PI * 2,
-        }));
+        // // Параметры частиц
+        // const config = {
+        //     particleCount: 100,
+        //     particleSize: 3,
+        // };
+        // // Массив частиц
+        // const particles = Array.from({ length: config.particleCount }, () => ({
+        //     x: Math.random() * canvas.width,
+        //     y: Math.random() * canvas.height,
+        //     size: Math.random() * config.particleSize + 1,
+        //     speed: Math.random() * 0.5 + 0.1,
+        //     offset: Math.random() * Math.PI * 2,
+        // }));
 
         updateControlPoints();
 
@@ -151,20 +151,20 @@ export const WaveBackground: React.FC = () => {
             ctx.stroke();
             ctx.shadowBlur = 0;
 
-            // Анимация частиц
-            particles.forEach((p) => {
-                p.y += p.speed;
-                p.offset += 0.01;
-                p.x += Math.sin(p.offset) * 0.5;
-                if (p.y > canvas.height + 10) {
-                    p.y = -10;
-                    p.x = Math.random() * canvas.width;
-                }
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = PARTICLE_COLOR_LIGHT;
-                ctx.fill();
-            });
+            // // Анимация частиц
+            // particles.forEach((p) => {
+            //     p.y += p.speed;
+            //     p.offset += 0.01;
+            //     p.x += Math.sin(p.offset) * 0.5;
+            //     if (p.y > canvas.height + 10) {
+            //         p.y = -10;
+            //         p.x = Math.random() * canvas.width;
+            //     }
+            //     ctx.beginPath();
+            //     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            //     ctx.fillStyle = PARTICLE_COLOR_LIGHT;
+            //     ctx.fill();
+            // });
         }
 
         animate(performance.now());

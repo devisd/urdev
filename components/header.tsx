@@ -70,7 +70,7 @@ export function Header() {
               {/* <span className="text-primary/80">dev</span> */}
             </Link>
 
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -88,7 +88,7 @@ export function Header() {
                 variant="outline"
                 size="sm"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="hidden md:flex"
+                className="hidden lg:flex"
               >
                 <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                 <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -98,7 +98,7 @@ export function Header() {
               <Button
                 size="sm"
                 onClick={() => setShowContactModal(true)}
-                className="hidden md:flex"
+                className="hidden lg:flex"
               >
                 Связаться
               </Button>
@@ -106,7 +106,7 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden"
+                className="lg:hidden"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
@@ -127,7 +127,7 @@ export function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-0 top-16 z-40 bg-background/80 backdrop-blur-sm border-b md:hidden"
+            className="fixed inset-x-0 top-16 z-40 bg-background/80 backdrop-blur-sm border-b lg:hidden"
           >
             <nav className="container mx-auto px-4 py-4">
               <div className="flex flex-col gap-2">
