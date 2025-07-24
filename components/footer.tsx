@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { MailIcon, PhoneIcon, MapPinIcon, FacebookIcon, TwitterIcon, InstagramIcon } from "lucide-react";
+import { Logo } from "./Icons";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,11 +21,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {/* О компании */}
           <div>
-            <Link href="/" className="inline-block mb-4">
-              <div className="flex items-center gap-2 text-2xl font-bold">
-                <span className="text-primary">UR</span>
-                {/* <span className="text-primary/80">dev</span> */}
-              </div>
+            <Link href="/">
+              <Logo />
             </Link>
             <p className="text-muted-foreground mb-6 max-w-xs">
               Профессиональная разработка сайтов и приложений, которые
