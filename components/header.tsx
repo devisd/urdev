@@ -87,7 +87,7 @@ export function Header() {
               <Link href="/" >
                 <Logo />
               </Link>
-              <p className="w-[140px] max-2xl:text-xs text-lg">Быстрая разработка сайтов под ключ</p>
+              <p className="w-[140px] block text-xs leading-tight">Быстрая разработка<br />сайтов под ключ</p>
             </div>
 
             <nav className="hidden lg:flex py-5 mx-1 items-center">
